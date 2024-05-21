@@ -43,8 +43,14 @@ router.post('/login', userStrategy.authenticate('local'), (req, res) => {
 // clear all server session information about this user
 router.post('/logout', (req, res) => {
   // Use passport's built-in method to log out the user
-  req.logout();
-  res.sendStatus(200);
+  req.logout(function(err) {
+    if (err) {
+      console.log('Logout failed:', err);
+      return res.sendStatus(500);
+    }
+    res.sendStatus(200);
+  });
+  
 });
 
 module.exports = router;
