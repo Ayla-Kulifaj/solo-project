@@ -1,0 +1,40 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .tables-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .table-wrapper {
+    flex: 1;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  .gainer {
+    color: green;
+  }
+  
+  .loser {
+    color: red;
+  }
+  

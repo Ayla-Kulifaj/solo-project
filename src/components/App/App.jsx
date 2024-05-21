@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import FavoritesPage from '../FavoritesPage/FavoritesPage';
 
 import './App.css';
 
@@ -50,8 +51,7 @@ function App() {
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:5173/user will show the UserPage if the user is logged in.
-            If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:5173/user */}
+            If the user is not logged in, the Proser is always on localhost:5173/user */}
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
@@ -66,6 +66,14 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows FavoritePage else shows LoginPage
+            exact
+            path="/favorites"
+          >
+            <FavoritesPage />
           </ProtectedRoute>
 
           <Route
