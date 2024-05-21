@@ -61,7 +61,7 @@ router.get('/data/:ticker/details', (req, res) => {
     }).catch(e => {
         console.error('An error happened:', e);
     });
-
+});
 // Get top Gainers 
 router.get('/gainers', (req, res) => {
     console.log("gainers")
@@ -86,7 +86,7 @@ router.get('/losers', (req, res) => {
         console.error('An error happened:', e);
     });
 })
-});
+
 
 
 module.exports = router;

@@ -53,4 +53,17 @@ router.post('/logout', (req, res) => {
   
 });
 
+router.get('/favorites/:id', (req, res) => {
+  const id = req.params.id;
+  const queryText= `SELECT * 
+  FROM "favorites" WHERE "userId" = $1`;
+
+  pool.query(queryText, [id])
+      .then((dRes)=> res.send(dRes.rows))
+      .catch((err)=> {
+          console.log('Get favorites failed:', err);
+          res.sendStatus(500)
+      });
+});
+
 module.exports = router;
