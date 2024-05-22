@@ -36,6 +36,8 @@ try {
 } catch (error) {
     console.log('Stock get losers request failed', error);
 }
+
+
 }
 
 function* stockSaga() {

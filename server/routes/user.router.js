@@ -65,5 +65,55 @@ router.get('/favorites/:id', (req, res) => {
           res.sendStatus(500)
       });
 });
+// put notes - will be used on favorites page
+router.put('/favorite/:userId/:favoriteId', (req, res) => {
+  const userId = req.params.userId;
+  const favoriteId = req.params.favoriteId;
+  const notes = req.body.notes;
+
+  const queryText = `UPDATE "favorites"
+  SET "notes" = $1
+  WHERE "userId" = $2 AND "id" = $3;`;
+
+  pool.query(queryText, [notes, userId, favoriteId])
+    .then((dbRes) => res.send(dbRes.rows))
+    .catch((err) => {
+      console.log('Get favorites failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
+// delete favorite - will be used on favorites page
+router.delete('/favorite/:userId/:favoriteId', (req, res) => {
+  const userId = req.params.userId;
+  const favoriteId = req.params.favoriteId;
+
+  const queryText = `DELETE
+  FROM "favorites" WHERE "userId" = $1 and "id" = $2;`;
+
+  pool.query(queryText, [userId, favoriteId])
+    .then((dbRes) => res.send(dbRes.rows))
+    .catch((err) => {
+      console.log('Get favorites failed: ', err);
+      res.sendStatus(500);
+    });
+});
+// put user username for account page
+router.put('/:userId', (req, res) => {
+  const userId = req.params.userId;
+  const username = req.body.username;
+
+  const queryText = `UPDATE "user"
+  SET "username" = $1
+  WHERE "id" = $2;`;
+
+  pool.query(queryText, [username, userId])
+    .then((dbRes) => res.send(dbRes.rows))
+    .catch((err) => {
+      console.log('Put username failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;
