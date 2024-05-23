@@ -22,6 +22,7 @@ function UserPage() {
     dispatch({ type: 'FETCH_STOCKS' });
     dispatch({ type: 'FETCH_GAINERS' });
     dispatch({ type: 'FETCH_LOSERS' });
+    dispatch({ type: 'FETCH_FAVORITES', payload: user.id });
   }, [dispatch]);
 
 

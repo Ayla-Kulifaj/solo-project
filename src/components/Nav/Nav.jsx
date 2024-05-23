@@ -36,6 +36,10 @@ function Nav() {
               Favorites Page
             </Link>
 
+            <Link className="navLink" to="/account">
+              Account Page
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
