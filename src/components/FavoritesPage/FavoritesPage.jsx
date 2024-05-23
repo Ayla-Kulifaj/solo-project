@@ -21,17 +21,22 @@ function FavoritesPage() {
     <div className="container">
       <p>Favorite's Page</p>
     <table>
+    <thead>
     <tr>
+      
       <th>Ticker Name</th>
       <th>Notes</th>
       <th>Delete</th>
     </tr>
+    </thead>
+    <tbody>
       {favorites.map((favorite) => (
         <tr key={favorite.id}>
       <td>{favorite.stockId}</td>
       <td>{favorite.notes}</td>
       <td> < button onClick={() => deleteFavorite(favorite.userId,favorite.id)}>Delete</button></td>
     </tr>))}
+    </tbody>
   </table>
   </div>
   );

@@ -114,6 +114,20 @@ router.put('/:userId', (req, res) => {
       res.sendStatus(500);
     });
 });
+router.post('/favorite', (req, res) => {
+  const userId = req.body.userId;
+  const stockId = req.body.stockId;
 
+  const queryText = `INSERT INTO "favorites"
+  ("userId", "stockId")
+  VALUES ($1, $2)`;
+
+  pool.query(queryText, [userId, stockId])
+    .then((dbRes) => res.send(dbRes.rows))
+    .catch((err) => {
+      console.log('POST favorites failed: ', err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

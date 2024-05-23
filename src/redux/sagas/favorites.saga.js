@@ -20,6 +20,7 @@ function* deleteFavorite(action){
     console.log('Delete Error:', error)
   }
 }
+
 function* favoritesSaga() {
     yield takeLatest('FETCH_FAVORITES', fetchFavorites);
     yield takeLatest ('DELETE_FAVORITES', deleteFavorite)

@@ -35,7 +35,7 @@ function UserPage() {
             <tbody>
               {gainers.length > 0 ? (
                 gainers.map((stock) => (
-                  <tr>
+                  <tr key={stock.id}>
                     <td>{stock.ticker}</td>
                     <td className="gainer">{stock.todaysChangePerc.toFixed(2)}%</td> 
                   </tr>
