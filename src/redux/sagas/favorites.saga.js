@@ -13,8 +13,16 @@ function* fetchFavorites(action) {
     console.log('Favorites get request failed', error);
   }
 }
+function* deleteFavorite(action){
+  try {
+    axios.delete(`/api/user/favorites/${action.payload.userId}/${action.payload.favoriteId}`)
+  }catch (error) {
+    console.log('Delete Error:', error)
+  }
+}
 function* favoritesSaga() {
     yield takeLatest('FETCH_FAVORITES', fetchFavorites);
+    yield takeLatest ('DELETE_FAVORITES', deleteFavorite)
 }
 
 export default favoritesSaga;

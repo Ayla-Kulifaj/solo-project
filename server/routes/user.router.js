@@ -84,7 +84,7 @@ router.put('/favorite/:userId/:favoriteId', (req, res) => {
 });
 
 // delete favorite - will be used on favorites page
-router.delete('/favorite/:userId/:favoriteId', (req, res) => {
+router.delete('/favorites/:userId/:favoriteId', (req, res) => {
   const userId = req.params.userId;
   const favoriteId = req.params.favoriteId;
 
