@@ -8,7 +8,9 @@ function FavoritesPage() {
   const favorites = useSelector(store => store.favorites);
   const history=useHistory();
     
- 
+  useEffect(() => {
+    dispatch({ type: 'FETCH_FAVORITES', payload: user.id });
+  }, []);
 
   const deleteFavorite= (userId, favoriteId) =>{
       dispatch({ type: 'DELETE_FAVORITES', payload: {userId: userId, favoriteId: favoriteId }})

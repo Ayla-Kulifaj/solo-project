@@ -16,7 +16,7 @@ function UserPage() {
     dispatch({type: 'POST_FAVORITE', payload:{
       userId:userId,
       stockId: stockId}});
-      history.push("/Favorites");
+      // history.push("/Favorites");
   }
   useEffect(() => {
     dispatch({ type: 'FETCH_STOCKS' });
@@ -30,7 +30,6 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
 
       <div className="tables-container">

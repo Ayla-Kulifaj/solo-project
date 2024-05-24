@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -8,6 +9,7 @@ function AccountPage() {
   const favorites = useSelector(store => store.favorites);
   const [newUsername, setNewUsername] = useState('');
   const dispatch = useDispatch();
+  const history=useHistory();
 
   const handleUsernameChange = (e) => {
     setNewUsername(e.target.value);
@@ -20,7 +22,7 @@ function AccountPage() {
         username: newUsername, 
         userId: user.id}});
       setNewUsername('');
-      history.push ("/accounts")
+      history.push ("/")
   };
 
   return (

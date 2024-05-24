@@ -2,12 +2,16 @@
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    
   }
+  
   
   .tables-container {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    
   }
   
   .table-wrapper {
@@ -18,12 +22,14 @@
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    font-family: "Lucida Console", "Courier New", monospace;
   }
   
   th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+      font-family: "Lucida Console", "Courier New", monospace;
   }
   
   th {
@@ -37,4 +43,15 @@
   .loser {
     color: red;
   }
+  h1 {
+    background-color: green;
+  }
   
+  div {
+    background-color: lightblue;
+  }
+  
+  p {
+    background-color: rgb(174, 208, 220);
+
+  }
