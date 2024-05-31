@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import './UserPage.css'; 
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import SearchBar from '../SearchBar/SearchBar';
 
 function UserPage() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const stocks = useSelector(store => store.stocks.stockReducer.results);
+  const stocks = useSelector(store => store.stocks.stockReducer);
   const gainers = useSelector(store => store.stocks.gainerReducer);
   const losers = useSelector(store => store.stocks.loserReducer);
   const history=useHistory();
+  const [stockData, setStockData] = useState([]);
 
   const addToFavorites = (userId,stockId) => {
     dispatch({type: 'POST_FAVORITE', payload:{
-      userId:userId,
+      userId: userId,
       stockId: stockId}});
-      // history.push("/Favorites");
+      history.push("/Favorites");
   }
+  
   useEffect(() => {
     dispatch({ type: 'FETCH_STOCKS' });
     dispatch({ type: 'FETCH_GAINERS' });
@@ -25,12 +28,26 @@ function UserPage() {
     dispatch({ type: 'FETCH_FAVORITES', payload: user.id });
   }, [dispatch]);
 
-
+  useEffect(() => {
+    if (stocks && stocks.length > 0) {
+      setStockData(stocks);
+    }
+  }, [stocks]);
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <LogOutButton className="btn" />
+      {stocks.length > 0 ? (
+                <div>
+                <SearchBar
+                  stockData={stockData}
+                  addToFavorites={addToFavorites}
+                  userId={user.id}
+                />
+                </div>
+                  ) : (
+        <p>Loading...</p>
+      )}
 
       <div className="tables-container">
         <div className="table-wrapper">

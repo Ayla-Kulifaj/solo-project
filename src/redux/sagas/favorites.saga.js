@@ -27,11 +27,19 @@ function* postFavorite(action){
     console.log('Delete Error:', error)
   }
 }
+function* putFavorite(action) {
+  try {
+    axios.put(`/api/user/favorite/${action.payload.userId}/${action.payload.favoriteId}`, {"notes": action.payload.notes})
+  } catch (error) {
+    console.log("failed to Put Favorite ", error)
+  }
+}
 
 function* favoritesSaga() {
     yield takeLatest('FETCH_FAVORITES', fetchFavorites);
     yield takeLatest ('DELETE_FAVORITES', deleteFavorite)
     yield takeLatest ('POST_FAVORITE', postFavorite)
+    yield takeLatest('UPDATE_FAVORITE', putFavorite)
 }
 
 export default favoritesSaga;
